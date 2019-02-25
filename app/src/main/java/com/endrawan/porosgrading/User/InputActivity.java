@@ -54,7 +54,7 @@ public class InputActivity extends AppCompatActivity implements OnCompleteListen
         toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(firebaseUser.getUid());
+        getSupportActionBar().setTitle("Kegiatan Baru");
 
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,8 +75,11 @@ public class InputActivity extends AppCompatActivity implements OnCompleteListen
         if (task.isSuccessful()) {
             DocumentReference documentReference = task.getResult();
             Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+            Toast.makeText(this, "Kegiatan baru berhasil ditambahkan!", Toast.LENGTH_SHORT).show();
+            finish();
         } else {
             Log.w(TAG, "Error adding document", task.getException());
+            Toast.makeText(this, "Gagal menambahkan kegiatan!", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:orientation="vertical">
+    
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginBottom="4dp"
+        tools:text="Real Hasta La Muerte"/>
+    
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Fusce elit mi, placerat eget aliquam sed, tincidunt vitae dui. Donec condimentum, purus non consequat blandit, leo neque blandit diam, id placerat nunc ligula vitae mi. Nam luctus ut sapien et lobortis."/>
+
+</LinearLayout>
