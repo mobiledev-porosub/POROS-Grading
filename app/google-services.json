@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "426604294334",
+    "firebase_url": "https://poros-grading.firebaseio.com",
+    "project_id": "poros-grading",
+    "storage_bucket": "poros-grading.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426604294334:android:a3ea1b0ae750ce28",
+        "android_client_info": {
+          "package_name": "com.endrawan.porosgrading"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "426604294334-13smc8vgl6pntp6qh2spo7c86e3dq6ev.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.endrawan.porosgrading",
+            "certificate_hash": "10bd589f5705d589da8ecaaf9a6416cb00d06225"
+          }
+        },
+        {
+          "client_id": "426604294334-eppv5rb3kgblfqkesmcs7nfjo1bv89ad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAELdUugJWRKMfORxyMYYLB6w2RjWj2BDg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "426604294334-eppv5rb3kgblfqkesmcs7nfjo1bv89ad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

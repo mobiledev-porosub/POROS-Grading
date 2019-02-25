@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">POROS Grading</string>
+    <string-array name="activity_type">
+        <item>Rapat</item>
+        <item>Materi</item>
+        <item>Workshop</item>
+    </string-array>
+</resources>
