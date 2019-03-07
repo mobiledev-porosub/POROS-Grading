@@ -5,4 +5,11 @@
         <item>Materi</item>
         <item>Workshop</item>
     </string-array>
+
+    <string-array name="divisions">
+        <item>Mobile</item>
+        <item>OS</item>
+        <item>Security</item>
+        <item>Web</item>
+    </string-array>
 </resources>

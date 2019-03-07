@@ -2,18 +2,20 @@ package com.endrawan.porosgrading.User;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
 import com.endrawan.porosgrading.Adapters.ActionsAdapter;
 import com.endrawan.porosgrading.Models.Action;
 import com.endrawan.porosgrading.R;
+import com.endrawan.porosgrading.SignInActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.EventListener;
@@ -26,6 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
+
+import Components.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements
         EventListener<QuerySnapshot> {
@@ -72,8 +76,22 @@ public class MainActivity extends AppCompatActivity implements
         });
     }
 
-    private void changeUser(FirebaseUser user) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.signOut:
+                mAuth.signOut();
+                updateUI();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -89,5 +107,13 @@ public class MainActivity extends AppCompatActivity implements
         }
         adapter.notifyDataSetChanged();
         progressBar.setVisibility(View.GONE);
+    }
+
+
+    private void updateUI() {
+        if (mAuth.getCurrentUser() == null) {
+            startActivity(new Intent(this, SignInActivity.class));
+            finish();
+        }
     }
 }

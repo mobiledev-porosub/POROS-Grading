@@ -7,7 +7,7 @@ public class User {
     public static final int LEVEL_USER = 1;
     public static final int LEVEL_ADMIN = 2;
 
-    User() {
+    public User() {
 
     }
 
