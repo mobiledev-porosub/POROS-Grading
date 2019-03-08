@@ -12,60 +12,81 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical">
-    
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:text="Register"
-            android:textSize="24sp"/>
-    
+            android:textSize="24sp" />
+
         <EditText
             android:id="@+id/name"
-            android:hint="Nama"
+            style="@style/AppTheme.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"/>
-    
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/ic_person_primary_24dp"
+            android:drawableLeft="@drawable/ic_person_primary_24dp"
+            android:hint="@string/nama_lengkap" />
+
         <EditText
             android:id="@+id/nim"
-            android:hint="NIM"
+            style="@style/AppTheme.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberSigned"/>
-        
-        <!--<EditText
-            android:id="@+id/username"
-            android:hint="Username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"/>-->
-    
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/ic_looks_one_primary_24dp"
+            android:drawableLeft="@drawable/ic_looks_one_primary_24dp"
+            android:hint="@string/nim"
+            android:inputType="numberSigned" />
+
         <EditText
             android:id="@+id/email"
-            android:hint="Email"
+            style="@style/AppTheme.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"/>
-        
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/ic_email_primary_24dp"
+            android:drawableLeft="@drawable/ic_email_primary_24dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
+
         <EditText
             android:id="@+id/password"
-            android:hint="Password"
+            style="@style/AppTheme.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
-        
-        
-        <Spinner
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/ic_lock_primary_24dp"
+            android:drawableLeft="@drawable/ic_lock_primary_24dp"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih Divisi"
+            android:layout_marginBottom="4dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"/>
+
+        <!--<Spinner
             android:id="@+id/divisi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/divisions"/>
-        
+            android:entries="@array/divisions" />-->
+
         <Button
             android:id="@+id/submit"
+            style="@style/AppTheme.Button.Standard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Daftar"/>
-        
+            android:text="Daftar" />
+
     </LinearLayout>
 </FrameLayout>

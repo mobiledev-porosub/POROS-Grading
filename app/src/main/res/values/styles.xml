@@ -6,6 +6,47 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:fontFamily">@font/fonts</item>
+    </style>
+
+    <style name="AppTheme.EditText" parent="AppTheme">
+        <item name="android:background">@color/editText_bg</item>
+        <item name="android:drawablePadding">16dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+    </style>
+
+    <style name="AppTheme.Button.Standard" parent="AppTheme.Button">
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="AppTheme.Button.Google" parent="AppTheme.Button">
+        <item name="android:background">@drawable/button_google</item>
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="android:drawableLeft">@drawable/ic_google</item>
+        <item name="android:text">Google</item>
+    </style>
+
+    <style name="AppTheme.Button.Facebook" parent="AppTheme.Button">
+        <item name="android:background">@drawable/button_facebook</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:drawableLeft">@drawable/ic_facebook</item>
+        <item name="android:text">Facebook</item>
     </style>
 
 </resources>

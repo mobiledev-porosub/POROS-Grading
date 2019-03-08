@@ -1,8 +1,9 @@
 package com.endrawan.porosgrading;
 
-import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,23 +11,30 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.endrawan.porosgrading.Adapters.DivisionsAdapter;
+import com.endrawan.porosgrading.Models.Division;
 import com.endrawan.porosgrading.Models.User;
-import com.endrawan.porosgrading.User.MainActivity;
+import com.endrawan.porosgrading.ViewHolders.DivisionViewHolder;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import Components.AppCompatActivity;
 
-public class SignUpActivity extends AppCompatActivity implements OnCompleteListener {
+public class SignUpActivity extends AppCompatActivity implements OnCompleteListener, DivisionsAdapter.divisionActions {
 
     private final String TAG = "SignUpActivity";
+    private Division division;
+
     private Button mSubmit;
     private EditText mName, mNim, mUsername, mEmail, mPassword;
-    private Spinner mSpinner;
+    private RecyclerView recyclerView;
+    private DivisionsAdapter adapter;
     SignUpActivity activity = this;
 
     @Override
@@ -38,9 +46,13 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
         mPassword = findViewById(R.id.password);
         mName = findViewById(R.id.name);
         mNim = findViewById(R.id.nim);
+        recyclerView = findViewById(R.id.recyclerView);
         //mUsername = findViewById(R.id.username);
         mSubmit = findViewById(R.id.submit);
-        mSpinner = findViewById(R.id.divisi);
+
+        adapter = new DivisionsAdapter(this, Arrays.asList(Config.DIVISIONS), this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setAdapter(adapter);
 
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,11 +88,18 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
         }
     }
 
+    /*private void initDivisions() {
+        divisions.add(
+                new Division("Mobile",
+                        R.drawable.ic_smartphone_primary_24dp,
+                        R.drawable.ic_smartphone_white_24dp,
+                        1),
+                new Division(""))
+    }*/
+
     private void updateUI() {
         if (mAuth.getCurrentUser() != null) {
             finish();
-        } else {
-
         }
     }
 
@@ -88,12 +107,13 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
         user = new User();
         user.setUid(firebaseUser.getUid());
         user.setName(mName.getText().toString());
-        user.setDivision(mSpinner.getSelectedItem().toString());
+        //user.setDivision(mSpinner.getSelectedItem().toString());
+        user.setDivision(String.valueOf(division.getCode()));
         user.setEmail(mEmail.getText().toString());
         user.setLevel(User.LEVEL_USER);
         user.setNim(mNim.getText().toString());
-        if(firebaseUser.getPhotoUrl() != null)
-        user.setPhoto_url(firebaseUser.getPhotoUrl().toString());
+        if (firebaseUser.getPhotoUrl() != null)
+            user.setPhoto_url(firebaseUser.getPhotoUrl().toString());
 
         db.collection(Config.DB_USERS)
                 .document(user.getUid())
@@ -111,5 +131,13 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
                         Log.w(TAG, "Error writing document", e);
                     }
                 });
+    }
+
+    @Override
+    public void clicked(Division newDivision, int oldPosition) {
+        DivisionViewHolder viewHolder = (DivisionViewHolder) recyclerView.findViewHolderForAdapterPosition(oldPosition);
+        if(viewHolder != null && division != null)
+        viewHolder.changeToNormal(this, division);
+        division = newDivision;
     }
 }

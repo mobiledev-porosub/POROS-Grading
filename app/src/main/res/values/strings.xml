@@ -1,15 +1,16 @@
 <resources>
     <string name="app_name">POROS Grading</string>
+    <string name="app_icon">App Icon</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="daftar">Daftar</string>
+    <string name="login_dengan_email">Login dengan Email</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="nim">NIM</string>
     <string-array name="activity_type">
         <item>Rapat</item>
         <item>Materi</item>
         <item>Workshop</item>
-    </string-array>
-
-    <string-array name="divisions">
-        <item>Mobile</item>
-        <item>OS</item>
-        <item>Security</item>
-        <item>Web</item>
     </string-array>
 </resources>
