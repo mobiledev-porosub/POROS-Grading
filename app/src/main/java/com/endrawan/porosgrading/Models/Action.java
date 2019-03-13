@@ -1,9 +1,12 @@
 package com.endrawan.porosgrading.Models;
 
-public class Action {
-    private String id, user_uid, name, activity_type, description, timestamp;
-    private int score;
+import com.google.firebase.Timestamp;
 
+public class Action {
+    private String id, user_uid, name, activity_type, description;
+    private Timestamp timestamp;
+    private int score, points;
+    private boolean status;
 
     public Action() {
     }
@@ -56,11 +59,27 @@ public class Action {
         this.score = score;
     }
 
-    public String getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

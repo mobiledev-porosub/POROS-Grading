@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.endrawan.porosgrading.Adapters.DivisionsAdapter;
@@ -20,9 +19,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import Components.AppCompatActivity;
 
@@ -47,7 +44,6 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
         mName = findViewById(R.id.name);
         mNim = findViewById(R.id.nim);
         recyclerView = findViewById(R.id.recyclerView);
-        //mUsername = findViewById(R.id.username);
         mSubmit = findViewById(R.id.submit);
 
         adapter = new DivisionsAdapter(this, Arrays.asList(Config.DIVISIONS), this);
@@ -57,8 +53,7 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username, email, password;
-                //username = mUsername.getText().toString();
+                String email, password;
                 email = mEmail.getText().toString();
                 password = mPassword.getText().toString();
 
@@ -84,18 +79,8 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
             Log.w(TAG, "createUserWithEmail:failure", task.getException());
             Toast.makeText(activity, "Authentication failed.",
                     Toast.LENGTH_SHORT).show();
-            //updateUserExist(null);
         }
     }
-
-    /*private void initDivisions() {
-        divisions.add(
-                new Division("Mobile",
-                        R.drawable.ic_smartphone_primary_24dp,
-                        R.drawable.ic_smartphone_white_24dp,
-                        1),
-                new Division(""))
-    }*/
 
     private void updateUI() {
         if (mAuth.getCurrentUser() != null) {
@@ -107,8 +92,7 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
         user = new User();
         user.setUid(firebaseUser.getUid());
         user.setName(mName.getText().toString());
-        //user.setDivision(mSpinner.getSelectedItem().toString());
-        user.setDivision(String.valueOf(division.getCode()));
+        user.setDivision(division.getCode());
         user.setEmail(mEmail.getText().toString());
         user.setLevel(User.LEVEL_USER);
         user.setNim(mNim.getText().toString());

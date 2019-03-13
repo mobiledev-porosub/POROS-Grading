@@ -5,69 +5,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".User.InputActivity">
-    
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:titleTextColor="@color/white"/>
-        
+            app:titleTextColor="@color/white" />
+
     </android.support.design.widget.AppBarLayout>
-    
+
     <LinearLayout
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nama Kegiatan"/>
-        
+        android:padding="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <EditText
             android:id="@+id/name"
+            style="@style/AppTheme.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:hint="Nama Kegiatan"
-            android:inputType="text"/>
-        
+            android:inputType="text" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Jenis Kegiatan"/>
-        
+            android:text="Jenis Kegiatan" />
         <Spinner
             android:id="@+id/category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:entries="@array/activity_type"/>
-        
-        <TextView
-            android:text="Deskripsi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        
+            android:entries="@array/activity_type" />
+
         <EditText
             android:id="@+id/description"
+            style="@style/AppTheme.EditText"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginBottom="16dp"
-            android:inputType="textMultiLine"
+            android:gravity="top|left"
             android:hint="Deskripsi"
-            android:singleLine="false"/>
-        
+            android:inputType="textMultiLine" />
+
         <Button
             android:id="@+id/submit"
+            style="@style/AppTheme.Button.Standard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit"/>
-        
+            android:padding="16dp"
+            android:text="Submit" />
+
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

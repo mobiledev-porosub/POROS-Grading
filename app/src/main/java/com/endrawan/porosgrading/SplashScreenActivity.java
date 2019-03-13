@@ -2,6 +2,8 @@ package com.endrawan.porosgrading;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.endrawan.porosgrading.Admin.AdminMainActivity;
 import com.endrawan.porosgrading.Models.User;

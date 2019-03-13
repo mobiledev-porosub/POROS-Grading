@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.endrawan.porosgrading.Adapters.ActionsAdapter;
+import com.endrawan.porosgrading.Config;
 import com.endrawan.porosgrading.Models.Action;
 import com.endrawan.porosgrading.R;
 import com.endrawan.porosgrading.SignInActivity;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements
         toolbar = findViewById(R.id.toolbar);
         recyclerView = findViewById(R.id.recyclerView);
 
-        db.collection("activities")
+        db.collection(Config.DB_ACTIVITIES)
                 .whereEqualTo("user_uid", firebaseUser.getUid())
                 .addSnapshotListener(this);
 

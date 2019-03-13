@@ -2,10 +2,10 @@ package com.endrawan.porosgrading.Models;
 
 public class User {
 
-    private String uid, name, email, photo_url, division, nim;
-    private int level;
-    public static final int LEVEL_USER = 1;
-    public static final int LEVEL_ADMIN = 2;
+    private String uid, name, email, photo_url, nim;
+    private int level, division;
+    public static final int LEVEL_ADMIN = 1;
+    public static final int LEVEL_USER = 2;
 
     public User() {
 
@@ -43,11 +43,11 @@ public class User {
         this.photo_url = photo_url;
     }
 
-    public String getDivision() {
+    public int getDivision() {
         return division;
     }
 
-    public void setDivision(String division) {
+    public void setDivision(int division) {
         this.division = division;
     }
 

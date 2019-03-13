@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/activities"
+        android:enabled="true"
+        android:icon="@drawable/ic_activities_black_24dp"
+        android:title="Kegiatan"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/members"
+        android:enabled="true"
+        android:icon="@drawable/ic_users_black_24dp"
+        android:title="Anggota"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/admins"
+        android:enabled="true"
+        android:icon="@drawable/ic_admins_black_24dp"
+        android:title="Admin"
+        app:showAsAction="ifRoom"/>
+</menu>

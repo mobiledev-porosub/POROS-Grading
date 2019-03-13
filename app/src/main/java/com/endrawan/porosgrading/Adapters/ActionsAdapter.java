@@ -31,7 +31,8 @@ public class ActionsAdapter extends RecyclerView.Adapter<ActionViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ActionViewHolder holder, int i) {
         Action action = actions.get(i);
-        holder.mName.setText(action.getName());
+        holder.mTitle.setText(action.getName());
+        holder.mType.setText(action.getActivity_type());
         holder.mDescription.setText(action.getDescription());
     }
 
