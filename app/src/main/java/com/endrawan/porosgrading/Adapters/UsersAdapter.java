@@ -6,10 +6,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.endrawan.porosgrading.Config;
-import com.endrawan.porosgrading.Models.Action;
 import com.endrawan.porosgrading.Models.User;
 import com.endrawan.porosgrading.R;
-import com.endrawan.porosgrading.ViewHolders.ActionViewHolder;
 import com.endrawan.porosgrading.ViewHolders.UserViewHolder;
 
 import java.util.List;

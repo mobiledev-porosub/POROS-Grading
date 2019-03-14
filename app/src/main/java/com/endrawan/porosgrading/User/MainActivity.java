@@ -1,8 +1,8 @@
 package com.endrawan.porosgrading.User;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -102,8 +102,9 @@ public class MainActivity extends AppCompatActivity implements
             return;
         }
 
+        actions.clear();
         for (QueryDocumentSnapshot doc : value) {
-            Action action = doc.toObject(Action.class);
+            final Action action = doc.toObject(Action.class);
             actions.add(action);
         }
         adapter.notifyDataSetChanged();

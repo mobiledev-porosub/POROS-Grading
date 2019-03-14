@@ -5,6 +5,7 @@ import com.endrawan.porosgrading.Models.Division;
 public class Config {
     public static final String DB_ACTIVITIES = "activities";
     public static final String DB_USERS = "users";
+    public static final String DB_ACTIVITY_TYPES = "activity_types";
 
     public static final Division[] DIVISIONS = {
             new Division("Mobile",

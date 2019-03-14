@@ -8,9 +8,16 @@
     <string name="login_dengan_email">Login dengan Email</string>
     <string name="nama_lengkap">Nama Lengkap</string>
     <string name="nim">NIM</string>
+    <string name="kegiatan">Kegiatan</string>
+    <string name="anggota">Anggota</string>
+    <string name="admin">Admin</string>
+    <string name="kategori_kegiatan">Kategori Kegiatan</string>
     <string-array name="activity_type">
         <item>Rapat</item>
         <item>Materi</item>
         <item>Workshop</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

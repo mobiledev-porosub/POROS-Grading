@@ -2,6 +2,7 @@ package Components;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import com.endrawan.porosgrading.Config;
 import com.endrawan.porosgrading.Models.User;
@@ -42,5 +43,9 @@ public class AppCompatActivity extends android.support.v7.app.AppCompatActivity 
         } else {
             listener.updateUserNotFound();
         }
+    }
+
+    protected void toast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

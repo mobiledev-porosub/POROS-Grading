@@ -4,49 +4,36 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
-import com.endrawan.porosgrading.Adapters.UsersAdapter;
-import com.endrawan.porosgrading.Config;
-import com.endrawan.porosgrading.Models.Action;
+import com.endrawan.porosgrading.Fragments.ActionsFragment;
+import com.endrawan.porosgrading.Fragments.TypesFragment;
+import com.endrawan.porosgrading.Fragments.UsersFragment;
 import com.endrawan.porosgrading.Models.User;
 import com.endrawan.porosgrading.R;
 import com.endrawan.porosgrading.SignInActivity;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nullable;
 
 import Components.AppCompatActivity;
 
 public class AdminMainActivity extends AppCompatActivity {
 
-    private static final int USERS_CODE = 1;
-    private static final int ADMINS_CODE = 2;
-    private static final int ACTIVITIES_CODE = 3;
-    private static final String TAG = "AdminMainActivity";
+//    private static final String TAG = "AdminMainActivity";
 
     private Toolbar mToolbar;
     private TextView mToolbarTitle;
     private BottomNavigationView mBottomNavigation;
-    private RecyclerView mRecyclerView;
+    private FloatingActionButton mAction;
 
-    private List<User> users = new ArrayList<>();
-    private List<User> admins = new ArrayList<>();
-    private List<Action> activities = new ArrayList<>();
-
-    private UsersAdapter usersAdapter, adminsAdapter;
+    private ActionsFragment actionsFragment = new ActionsFragment();
+    private UsersFragment usersFragment = UsersFragment.newInstance(User.LEVEL_USER);
+    private UsersFragment adminsFragment = UsersFragment.newInstance(User.LEVEL_ADMIN);
+    private TypesFragment typesFragment = new TypesFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,31 +43,45 @@ public class AdminMainActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.toolbar);
         mToolbarTitle = findViewById(R.id.toolbar_title);
         mBottomNavigation = findViewById(R.id.bottom_navigation);
-        mRecyclerView = findViewById(R.id.recyclerView);
-
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        loadAllData();
-        usersAdapter = new UsersAdapter(users);
-        adminsAdapter = new UsersAdapter(admins);
+        mAction = findViewById(R.id.action);
 
         setSupportActionBar(mToolbar);
 
         mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 switch (menuItem.getItemId()) {
                     case R.id.activities:
-                        mToolbarTitle.setText("Kegiatan");
-                        mRecyclerView.setAdapter(null);
+                        mToolbarTitle.setText(getString(R.string.kegiatan));
+                        transaction.replace(R.id.container, actionsFragment);
+                        transaction.commit();
+                        hideAction();
                         return true;
                     case R.id.members:
-                        mToolbarTitle.setText("Anggota");
-                        mRecyclerView.setAdapter(usersAdapter);
+                        mToolbarTitle.setText(getString(R.string.anggota));
+                        transaction.replace(R.id.container, usersFragment);
+                        transaction.commit();
+                        hideAction();
                         return true;
                     case R.id.admins:
-                        mToolbarTitle.setText("Admin");
-                        mRecyclerView.setAdapter(adminsAdapter);
+                        mToolbarTitle.setText(getString(R.string.admin));
+                        transaction.replace(R.id.container, adminsFragment);
+                        transaction.commit();
+                        hideAction();
+                        return true;
+                    case R.id.categories:
+                        mToolbarTitle.setText(getString(R.string.kategori_kegiatan));
+                        transaction.replace(R.id.container, typesFragment);
+                        transaction.commit();
+                        showAction(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(
+                                        AdminMainActivity.this,
+                                        InsertActionTypeActivity.class));
+                            }
+                        });
                         return true;
                     default:
                         return false;
@@ -115,63 +116,12 @@ public class AdminMainActivity extends AppCompatActivity {
             finish();
         }
     }
-
-    private void loadAllData() {
-        db.collection(Config.DB_ACTIVITIES)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                        loadCompleted(queryDocumentSnapshots, e, ACTIVITIES_CODE);
-                    }
-                });
-
-        db.collection(Config.DB_USERS)
-                .whereEqualTo("level", User.LEVEL_USER)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                        loadCompleted(queryDocumentSnapshots, e, USERS_CODE);
-                    }
-                });
-
-        db.collection(Config.DB_USERS)
-                .whereEqualTo("level", User.LEVEL_ADMIN)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                        loadCompleted(queryDocumentSnapshots, e, ADMINS_CODE);
-                    }
-                });
+    private void hideAction() {
+        mAction.hide();
     }
 
-    private void loadCompleted(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException e, int dataCode) {
-        if (e != null) {
-            Log.w(TAG, "Listen failed.", e);
-            return;
-        }
-
-        if (value != null)
-            switch (dataCode) {
-                case ACTIVITIES_CODE:
-                    for (QueryDocumentSnapshot doc : value) {
-                        Action action = doc.toObject(Action.class);
-                        activities.add(action);
-                    }
-                    break;
-                case USERS_CODE:
-                    for (QueryDocumentSnapshot doc : value) {
-                        User user = doc.toObject(User.class);
-                        users.add(user);
-                    }
-                    usersAdapter.notifyDataSetChanged();
-                    break;
-                case ADMINS_CODE:
-                    for (QueryDocumentSnapshot doc : value) {
-                        User admin = doc.toObject(User.class);
-                        admins.add(admin);
-                    }
-                    adminsAdapter.notifyDataSetChanged();
-                    break;
-            }
+    private void showAction(View.OnClickListener listener) {
+        mAction.show();
+        mAction.setOnClickListener(listener);
     }
 }

@@ -6,7 +6,7 @@
     
     <color name="white">#FFFFFF</color>
     <color name="black">#212121</color>
-    <color name="red"></color>
+    <color name="red">#D32F2F</color>
     <color name="background">#F6F3F4</color>
 
     <color name="editText_bg">#D8D8D8</color>

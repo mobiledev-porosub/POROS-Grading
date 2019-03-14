@@ -21,4 +21,12 @@
         android:icon="@drawable/ic_admins_black_24dp"
         android:title="Admin"
         app:showAsAction="ifRoom"/>
+
+
+    <item
+        android:id="@+id/categories"
+        android:enabled="true"
+        android:icon="@drawable/ic_categories_black_24dp"
+        android:title="Kategori"
+        app:showAsAction="ifRoom"/>
 </menu>
