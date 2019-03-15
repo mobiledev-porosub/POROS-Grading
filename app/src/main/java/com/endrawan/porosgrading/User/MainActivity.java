@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements
 
 
     private void updateUI() {
+
         if (mAuth.getCurrentUser() == null) {
             startActivity(new Intent(this, SignInActivity.class));
             finish();

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.endrawan.porosgrading.Config;
 import com.endrawan.porosgrading.Models.Action;
 import com.endrawan.porosgrading.Models.User;
@@ -106,6 +107,9 @@ public class ActionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                             DocumentSnapshot doc = task.getResult();
                             User user = doc.toObject(User.class);
                             holder.mName.setText(user.getName());
+                            if (user.getPhoto_url() != null) {
+                                Glide.with(context).load(user.getPhoto_url()).into(holder.mImgUser);
+                            }
                         }
                     }
                 });
