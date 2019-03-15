@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseUser firebaseUser = mAuth.getCurrentUser();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private ActionsAdapter adapter = new ActionsAdapter(actions);
+    private ActionsAdapter adapter = new ActionsAdapter(actions, ActionsAdapter.USER_STYLE);
 
     private FloatingActionButton fab;
     private ProgressBar progressBar;

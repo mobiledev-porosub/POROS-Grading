@@ -45,8 +45,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:ellipsize="end"
-            android:maxLines="4"
-            app:layout_constraintBottom_toTopOf="@+id/img_status"
+            android:maxLines="3"
+            app:layout_constraintBottom_toTopOf="@+id/img_user"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
             app:layout_constraintTop_toBottomOf="@+id/type"
@@ -59,11 +59,11 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:textColor="@color/text_grey"
-            app:layout_constraintBottom_toBottomOf="@+id/img_status"
+            app:layout_constraintBottom_toBottomOf="@+id/img_user"
             app:layout_constraintEnd_toStartOf="@+id/points"
-            app:layout_constraintStart_toEndOf="@+id/img_status"
-            app:layout_constraintTop_toTopOf="@+id/img_status"
-            tools:text="Tekashi69" />
+            app:layout_constraintStart_toEndOf="@+id/img_user"
+            app:layout_constraintTop_toTopOf="@+id/img_user"
+            tools:text="Robb Stark" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guidelineLeft"
@@ -80,12 +80,13 @@
             app:layout_constraintGuide_end="16dp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_status"
+            android:id="@+id/img_user"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="16dp"
+            android:src="@drawable/no_profile_pic"
             app:layout_constraintBottom_toTopOf="@+id/img_decline"
             app:layout_constraintEnd_toStartOf="@+id/name"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -142,13 +143,13 @@
             android:layout_height="wrap_content"
             android:text="Terima"
             android:textColor="@color/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="@+id/accept_img"
+            app:layout_constraintBottom_toBottomOf="@+id/img_accept"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-            app:layout_constraintStart_toEndOf="@+id/accept_img"
-            app:layout_constraintTop_toTopOf="@+id/accept_img" />
+            app:layout_constraintStart_toEndOf="@+id/img_accept"
+            app:layout_constraintTop_toTopOf="@+id/img_accept" />
 
         <ImageView
-            android:id="@+id/accept_img"
+            android:id="@+id/img_accept"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -160,6 +161,22 @@
             app:layout_constraintStart_toStartOf="@+id/guidelineCenter"
             app:layout_constraintTop_toTopOf="@+id/img_decline"
             app:srcCompat="@drawable/ic_check_primary_24dp" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="1dp"
+            android:layout_height="24dp"
+            android:background="#DFDFDF"
+            app:layout_constraintBottom_toBottomOf="@+id/img_decline"
+            app:layout_constraintEnd_toStartOf="@+id/img_accept"
+            app:layout_constraintStart_toEndOf="@+id/decline"
+            app:layout_constraintTop_toTopOf="@+id/img_decline" />
+
+        <android.support.constraint.Group
+            android:id="@+id/choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="img_accept,view,img_decline,decline,accept" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

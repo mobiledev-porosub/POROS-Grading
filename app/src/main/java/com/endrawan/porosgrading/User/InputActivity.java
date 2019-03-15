@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.endrawan.porosgrading.Config;
 import com.endrawan.porosgrading.Models.Action;
@@ -27,7 +26,7 @@ import java.util.List;
 
 import Components.AppCompatActivity;
 
-public class InputActivity extends AppCompatActivity implements OnCompleteListener<DocumentReference> {
+public class InputActivity extends AppCompatActivity implements OnCompleteListener<Void> {
 
     private final String TAG = "InputActivity";
 
@@ -68,22 +67,23 @@ public class InputActivity extends AppCompatActivity implements OnCompleteListen
                 action.setPoints(actionType.getPoints());
                 action.setDescription(mDescription.getText().toString());
                 action.setUser_uid(firebaseUser.getUid());
-                db.collection("activities")
-                        .add(action).addOnCompleteListener(activity);
+                DocumentReference ref = db.collection(Config.DB_ACTIVITIES).document();
+                action.setId(ref.getId());
+                ref.set(action).addOnCompleteListener(activity);
             }
         });
     }
 
     @Override
-    public void onComplete(@NonNull Task<DocumentReference> task) {
+    public void onComplete(@NonNull Task<Void> task) {
         if (task.isSuccessful()) {
-            DocumentReference documentReference = task.getResult();
-            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-            Toast.makeText(this, "Kegiatan baru berhasil ditambahkan!", Toast.LENGTH_SHORT).show();
+            //Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+            //Toast.makeText(this, "Kegiatan baru berhasil ditambahkan!", Toast.LENGTH_SHORT).show();
+            toast("Kegiatan baru berhasil ditambahkan!");
             finish();
         } else {
             Log.w(TAG, "Error adding document", task.getException());
-            Toast.makeText(this, "Gagal menambahkan kegiatan!", Toast.LENGTH_SHORT).show();
+            toast("Gagal menambahkan kegiatan!");
         }
     }
 

@@ -33,7 +33,7 @@ public class ActionsFragment extends Fragment {
     private static final String TAG = "ActionsFragment";
     private RecyclerView mRecyclerView;
     private List<Action> activities = new ArrayList<>();
-    private ActionsAdapter actionsAdapter = new ActionsAdapter(activities);
+    private ActionsAdapter actionsAdapter = new ActionsAdapter(activities, ActionsAdapter.ADMIN_STYLE);
 
     public ActionsFragment() {
         // Required empty public constructor

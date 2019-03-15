@@ -46,7 +46,7 @@
             android:layout_marginBottom="16dp"
             android:ellipsize="end"
             android:maxLines="4"
-            app:layout_constraintBottom_toTopOf="@+id/img_status"
+            app:layout_constraintBottom_toTopOf="@+id/img_user"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
             app:layout_constraintTop_toBottomOf="@+id/type"
@@ -62,7 +62,7 @@
             android:textColor="@color/text_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/points"
-            app:layout_constraintStart_toEndOf="@+id/img_status"
+            app:layout_constraintStart_toEndOf="@+id/img_user"
             app:layout_constraintTop_toBottomOf="@+id/desc" />
 
         <android.support.constraint.Guideline
@@ -80,7 +80,7 @@
             app:layout_constraintGuide_end="16dp" />
 
         <ImageView
-            android:id="@+id/img_status"
+            android:id="@+id/img_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"

@@ -18,7 +18,7 @@ public class ActionViewHolder extends RecyclerView.ViewHolder {
         mDescription = itemView.findViewById(R.id.desc);
         mType = itemView.findViewById(R.id.type);
         mStatus = itemView.findViewById(R.id.name);
-        mImgStatus = itemView.findViewById(R.id.img_status);
+        mImgStatus = itemView.findViewById(R.id.img_user);
         mPoints = itemView.findViewById(R.id.points);
     }
 }
