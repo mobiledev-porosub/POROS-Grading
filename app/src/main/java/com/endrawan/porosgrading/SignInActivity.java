@@ -19,12 +19,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import Components.AppCompatActivity;
 
@@ -68,8 +68,19 @@ public class SignInActivity extends AppCompatActivity implements OnCompleteListe
             @Override
             public void onClick(View v) {
                 String email, password;
-                email = mEmail.getText().toString();
-                password = mPassword.getText().toString();
+                email = mEmail.getText().toString().trim();
+                password = mPassword.getText().toString().trim();
+
+                if(!(email.length() >=  Config.MIN_LENGTH_EMAIL)) {
+                    toast("Email minimal " + Config.MIN_LENGTH_EMAIL + " Karakter!");
+                    return;
+                }
+
+                if(!(password.length() >=  Config.MIN_LENGTH_PASSWORD)) {
+                    toast("Password minimal " + Config.MIN_LENGTH_PASSWORD + " Karakter!");
+                    return;
+                }
+
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(activity, activity);
             }
@@ -163,32 +174,43 @@ public class SignInActivity extends AppCompatActivity implements OnCompleteListe
 
     private void addUserToDB() {
         firebaseUser = mAuth.getCurrentUser();
-        user = new User();
-        user.setUid(firebaseUser.getUid());
-        user.setName(firebaseUser.getDisplayName());
-//        user.setDivision(null);
-        user.setEmail(firebaseUser.getEmail());
-        user.setLevel(User.LEVEL_USER);
-//        user.setNim(mNim.getText().toString());
-        if (firebaseUser.getPhotoUrl() != null)
-            user.setPhoto_url(firebaseUser.getPhotoUrl().toString());
 
-        db.collection(Config.DB_USERS)
-                .document(user.getUid())
-                .set(user)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully written!");
-                        //updateUI();
+        final DocumentReference ref = db.collection(Config.DB_USERS).document(firebaseUser.getUid());
+        ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "Document exists!");
                         activity.updateUser(activity);
+                    } else {
+                        user = new User();
+                        user.setDivision(-1);
+                        user.setUid(firebaseUser.getUid());
+                        user.setName(firebaseUser.getDisplayName());
+                        user.setEmail(firebaseUser.getEmail());
+                        user.setLevel(User.LEVEL_USER);
+                        if (firebaseUser.getPhotoUrl() != null)
+                            user.setPhoto_url(firebaseUser.getPhotoUrl().toString());
+
+                        ref.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    activity.updateUser(activity);
+                                } else {
+                                    Log.d(TAG, "Failed with: ", task.getException());
+                                }
+                            }
+                        });
+
+                        Log.d(TAG, "Document does not exist!");
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error writing document", e);
-                    }
-                });
+                } else {
+                    Log.d(TAG, "Failed with: ", task.getException());
+                }
+            }
+        });
     }
 }

@@ -14,7 +14,18 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:titleTextColor="@color/white" />
+            app:titleTextColor="@color/white" >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/no_profile_pic"
+                android:layout_gravity="end"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"/>
+
+        </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
     <FrameLayout

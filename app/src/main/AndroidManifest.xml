@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".Admin.DetailActivity"></activity>
+        <activity android:name=".User.EditActivity" />
+        <activity android:name=".ProfileActivity" />
         <activity android:name=".Admin.InsertActionTypeActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>

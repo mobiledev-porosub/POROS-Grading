@@ -172,7 +172,8 @@
                 android:padding="16dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:text="Edit Akun" />
+                android:text="Edit Akun"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/delete"
@@ -202,11 +203,11 @@
                 android:padding="16dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:text="Logout" />
+                android:text="Logout"
+                android:visibility="gone" />
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
-
 
 
 </android.support.design.widget.CoordinatorLayout>

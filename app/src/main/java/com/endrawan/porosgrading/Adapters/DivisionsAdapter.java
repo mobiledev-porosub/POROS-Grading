@@ -19,11 +19,19 @@ public class DivisionsAdapter extends RecyclerView.Adapter<DivisionViewHolder> {
     private Context context;
     private divisionActions actions;
     private int oldPosition;
+    private int firstSelected = -1;
 
     public DivisionsAdapter(Context context, List<Division> divisions, divisionActions actions) {
         this.divisions = divisions;
         this.context = context;
         this.actions = actions;
+    }
+
+    public DivisionsAdapter(Context context, List<Division> divisions, divisionActions actions, int selected) {
+        this.divisions = divisions;
+        this.context = context;
+        this.actions = actions;
+        firstSelected = selected;
     }
 
     @NonNull
@@ -49,6 +57,10 @@ public class DivisionsAdapter extends RecyclerView.Adapter<DivisionViewHolder> {
                 holder.changeToSelected(context, division);
             }
         });
+        if (i == firstSelected) {
+            holder.changeToSelected(context, division);
+            firstSelected = -1;
+        }
     }
 
     @Override

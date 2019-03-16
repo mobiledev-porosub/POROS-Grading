@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".SignUpActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Edit"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/name"
+            style="@style/AppTheme.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/ic_person_primary_24dp"
+            android:drawableLeft="@drawable/ic_person_primary_24dp"
+            android:hint="@string/nama_lengkap" />
+
+        <EditText
+            android:id="@+id/nim"
+            style="@style/AppTheme.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/ic_looks_one_primary_24dp"
+            android:drawableLeft="@drawable/ic_looks_one_primary_24dp"
+            android:hint="@string/nim"
+            android:inputType="numberSigned" />
+
+        <EditText
+            android:id="@+id/email"
+            style="@style/AppTheme.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/ic_email_primary_24dp"
+            android:drawableLeft="@drawable/ic_email_primary_24dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:enabled="false"/>
+
+        <!--<EditText-->
+            <!--android:id="@+id/password"-->
+            <!--style="@style/AppTheme.EditText"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="16dp"-->
+            <!--android:drawableStart="@drawable/ic_lock_primary_24dp"-->
+            <!--android:drawableLeft="@drawable/ic_lock_primary_24dp"-->
+            <!--android:hint="@string/password"-->
+            <!--android:inputType="textPassword" />-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/passwordConfirm"-->
+            <!--style="@style/AppTheme.EditText"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="16dp"-->
+            <!--android:drawableStart="@drawable/ic_lock_primary_24dp"-->
+            <!--android:drawableLeft="@drawable/ic_lock_primary_24dp"-->
+            <!--android:hint="Konfirmasi Password"-->
+            <!--android:inputType="textPassword" />-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih Divisi"
+            android:layout_marginBottom="4dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/submit"
+            style="@style/AppTheme.Button.Standard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Akun" />
+
+    </LinearLayout>
+</FrameLayout>

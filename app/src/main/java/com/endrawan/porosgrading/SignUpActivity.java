@@ -29,7 +29,7 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
     private Division division;
 
     private Button mSubmit;
-    private EditText mName, mNim, mUsername, mEmail, mPassword;
+    private EditText mName, mNim, mEmail, mPassword;
     private RecyclerView recyclerView;
     private DivisionsAdapter adapter;
     SignUpActivity activity = this;
@@ -53,9 +53,37 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email, password;
-                email = mEmail.getText().toString();
-                password = mPassword.getText().toString();
+                String name, email, password, nim;
+                name = mName.getText().toString();
+                email = mEmail.getText().toString().trim();
+                password = mPassword.getText().toString().trim();
+                nim = mNim.getText().toString();
+
+                if (division == null) {
+                    toast("Pilih divisi anda!");
+                    return;
+                }
+
+                if(!(name.length() >=  Config.MIN_LENGTH_NAME)) {
+                    toast("Nama minimal " + Config.MIN_LENGTH_NAME + " Karakter!");
+                    return;
+                }
+
+                if(!(email.length() >=  Config.MIN_LENGTH_EMAIL)) {
+                    toast("Email minimal " + Config.MIN_LENGTH_EMAIL + " Karakter!");
+                    return;
+                }
+
+                if(!(password.length() >=  Config.MIN_LENGTH_PASSWORD)) {
+                    toast("Password minimal " + Config.MIN_LENGTH_PASSWORD + " Karakter!");
+                    return;
+                }
+
+
+                if(!(nim.length() >=  Config.MIN_LENGTH_NIM)) {
+                    toast("Email minimal " + Config.MIN_LENGTH_NIM + " Karakter!");
+                    return;
+                }
 
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(activity, activity);

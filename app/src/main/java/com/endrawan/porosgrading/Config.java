@@ -7,6 +7,11 @@ public class Config {
     public static final String DB_USERS = "users";
     public static final String DB_ACTIVITY_TYPES = "activity_types";
 
+    public static final int MIN_LENGTH_EMAIL = 6;
+    public static final int MIN_LENGTH_PASSWORD = 6;
+    public static final int MIN_LENGTH_NIM = 15;
+    public static final int MIN_LENGTH_NAME = 6;
+
     public static final Division[] DIVISIONS = {
             new Division("Mobile",
                     R.drawable.ic_smartphone_primary_24dp,
