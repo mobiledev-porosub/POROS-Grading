@@ -1,6 +1,8 @@
 package com.endrawan.porosgrading.Models;
 
-import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.ServerTimestamp;
+
+import java.util.Date;
 
 public class Action {
     public static final int STATUS_ACCEPTED = 1;
@@ -8,7 +10,7 @@ public class Action {
     public static final int STATUS_UNCONFIRMED = 0;
 
     private String id, user_uid, name, description, activity_type;
-    private Timestamp timestamp;
+    @ServerTimestamp private Date timestamp;
     private int status, points;
 
     public Action() {
@@ -46,11 +48,11 @@ public class Action {
         this.description = description;
     }
 
-    public Timestamp getTimestamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 

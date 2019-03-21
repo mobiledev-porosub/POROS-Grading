@@ -15,9 +15,10 @@ import com.endrawan.porosgrading.Adapters.ActionsAdapter;
 import com.endrawan.porosgrading.Config;
 import com.endrawan.porosgrading.Models.Action;
 import com.endrawan.porosgrading.R;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -43,24 +44,23 @@ public class ActionsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db.collection(Config.DB_ACTIVITIES)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException e) {
-                        if (e != null) {
-                            Log.w(TAG, "Listen failed.", e);
-                            return;
-                        }
-
-                        if (value != null) {
-                            activities.clear();
-                            for (QueryDocumentSnapshot doc : value) {
-                                Action action = doc.toObject(Action.class);
-                                activities.add(action);
-                            }
-                            actionsAdapter.notifyDataSetChanged();
-                        }
+                .orderBy("timestamp", Query.Direction.DESCENDING)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    QuerySnapshot docs = task.getResult();
+                    activities.clear();
+                    for (DocumentSnapshot doc : docs.getDocuments()) {
+                        Action action = doc.toObject(Action.class);
+                        activities.add(action);
                     }
-                });
+                    actionsAdapter.notifyDataSetChanged();
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
     }
 
     @Override

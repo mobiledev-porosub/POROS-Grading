@@ -2,12 +2,10 @@ package com.endrawan.porosgrading;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.endrawan.porosgrading.Admin.AdminMainActivity;
 import com.endrawan.porosgrading.Models.User;
-import com.endrawan.porosgrading.User.MainActivity;
+import com.endrawan.porosgrading.User.HomeActivity;
 
 import Components.AppCompatActivity;
 
@@ -27,7 +25,7 @@ public class SplashScreenActivity extends AppCompatActivity implements AppCompat
             if (user.getLevel() == User.LEVEL_ADMIN)
                 startActivity(new Intent(this, AdminMainActivity.class));
             else
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, HomeActivity.class));
             finish();
         }
     }

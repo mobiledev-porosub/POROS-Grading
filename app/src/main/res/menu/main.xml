@@ -9,6 +9,7 @@
 
     <item
         android:id="@+id/profile"
-        android:title="profil"
-        app:showAsAction="ifRoom"/>
+        android:title="Profil"
+        android:icon="@drawable/ic_edit_black_24dp"
+        app:showAsAction="always"/>
 </menu>

@@ -3,7 +3,7 @@ package com.endrawan.porosgrading.Models;
 public class User {
 
     private String uid, name, email, photo_url, nim;
-    private int level, division;
+    private int level, division, totalPoints;
     public static final int LEVEL_ADMIN = 1;
     public static final int LEVEL_USER = 2;
 
@@ -65,5 +65,13 @@ public class User {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public int getTotalPoints() {
+        return totalPoints;
+    }
+
+    public void setTotalPoints(int totalPoints) {
+        this.totalPoints = totalPoints;
     }
 }

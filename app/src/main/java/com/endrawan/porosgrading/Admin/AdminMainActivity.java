@@ -64,12 +64,6 @@ public class AdminMainActivity extends AppCompatActivity {
                         transaction.commit();
                         hideAction();
                         return true;
-                    case R.id.admins:
-                        mToolbarTitle.setText(getString(R.string.admin));
-                        transaction.replace(R.id.container, adminsFragment);
-                        transaction.commit();
-                        hideAction();
-                        return true;
                     case R.id.categories:
                         mToolbarTitle.setText(getString(R.string.kategori_kegiatan));
                         transaction.replace(R.id.container, typesFragment);

@@ -22,6 +22,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import Components.AppCompatActivity;
@@ -67,6 +68,7 @@ public class InputActivity extends AppCompatActivity implements OnCompleteListen
                 action.setPoints(actionType.getPoints());
                 action.setDescription(mDescription.getText().toString());
                 action.setUser_uid(firebaseUser.getUid());
+                action.setTimestamp(new Date());
                 DocumentReference ref = db.collection(Config.DB_ACTIVITIES).document();
                 action.setId(ref.getId());
                 ref.set(action).addOnCompleteListener(activity);
