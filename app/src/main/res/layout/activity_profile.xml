@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:fontFamily="@font/open_sans_semi_bold"
-                    android:text="NIM"
+                    android:text="@string/nim"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -118,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:fontFamily="@font/open_sans_semi_bold"
-                    android:text="Divisi"
+                    android:text="@string/divisi"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -144,7 +144,7 @@
                 android:padding="16dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:text="Edit Akun" />
+                android:text="@string/edit_akun" />
 
             <TextView
                 android:id="@+id/delete"
@@ -160,7 +160,7 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:visibility="gone"
-                android:text="Nonaktifkan Akun" />
+                android:text="@string/nonaktifkan_akun" />
 
             <TextView
                 android:id="@+id/logout"
@@ -174,7 +174,7 @@
                 android:padding="16dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:text="Logout" />
+                android:text="@string/logout" />
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

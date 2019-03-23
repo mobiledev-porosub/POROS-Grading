@@ -30,16 +30,10 @@ public class ActionActivity extends AppCompatActivity implements
 
     private final String TAG = "ActionActivity";
 
-    private final int RC_PROFILE = 1;
-
-    public static final String EXTRAS_POINTS = "points";
-
     private List<Action> actions = new ArrayList<>();
     private ActionsAdapter adapter = new ActionsAdapter(actions, ActionsAdapter.USER_STYLE);
     private int totalPoints = 0;
 
-//    private FloatingActionButton fab;
-//    private CircleImageView mImage;
     private ProgressBar progressBar;
     private Toolbar toolbar;
     private RecyclerView recyclerView;
@@ -61,30 +55,10 @@ public class ActionActivity extends AppCompatActivity implements
                 .addSnapshotListener(this);
 
         setSupportActionBar(toolbar);
-//        getSupportActionBar().setTitle("Home");
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(ActionActivity.this, InputActivity.class));
-//            }
-//        });
-
-//        mImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(ActionActivity.this, ProfileActivity.class);
-//                intent.putExtra(EXTRAS_POINTS, totalPoints);
-//                startActivityForResult(intent, RC_PROFILE);
-//            }
-//        });
-
-//        if (user.getPhoto_url() != null)
-//            Glide.with(this).load(user.getPhoto_url()).into(mImage);
     }
 
     @Override
@@ -105,12 +79,4 @@ public class ActionActivity extends AppCompatActivity implements
         adapter.notifyDataSetChanged();
         progressBar.setVisibility(View.GONE);
     }
-
-
-//    private void updateUI() {
-//        if (mAuth.getCurrentUser() == null) {
-//            startActivity(new Intent(this, SignInActivity.class));
-//            finish();
-//        }
-//    }
 }

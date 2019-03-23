@@ -22,7 +22,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:text="Lihat" />
+        android:text="@string/lihat" />
 
     <LinearLayout
         android:layout_width="match_parent"

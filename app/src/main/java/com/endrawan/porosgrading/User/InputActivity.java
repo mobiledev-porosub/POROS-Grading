@@ -94,8 +94,6 @@ public class InputActivity extends AppCompatActivity implements OnCompleteListen
     @Override
     public void onComplete(@NonNull Task<Void> task) {
         if (task.isSuccessful()) {
-            //Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-            //Toast.makeText(this, "Kegiatan baru berhasil ditambahkan!", Toast.LENGTH_SHORT).show();
             toast("Kegiatan baru berhasil ditambahkan!");
             finish();
         } else {

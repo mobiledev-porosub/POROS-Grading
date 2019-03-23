@@ -1,112 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".SignUpActivity">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical">
+        android:layout_marginBottom="16dp"
+        android:text="@string/daftar"
+        android:textSize="24sp" />
 
-        <TextView
+    <EditText
+        android:id="@+id/name"
+        style="@style/AppTheme.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="@string/nama_lengkap"
+        android:drawableStart="@drawable/ic_person_primary_24dp"
+        android:drawableLeft="@drawable/ic_person_primary_24dp"
+        android:hint="@string/nama_lengkap"
+        android:inputType="textPersonName"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/nim"
+        style="@style/AppTheme.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="@string/nim"
+        android:drawableStart="@drawable/ic_looks_one_primary_24dp"
+        android:drawableLeft="@drawable/ic_looks_one_primary_24dp"
+        android:hint="@string/nim"
+        android:inputType="numberSigned"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/email"
+        style="@style/AppTheme.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="@string/email"
+        android:drawableStart="@drawable/ic_email_primary_24dp"
+        android:drawableLeft="@drawable/ic_email_primary_24dp"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/password"
+        style="@style/AppTheme.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="@string/password"
+        android:drawableStart="@drawable/ic_lock_primary_24dp"
+        android:drawableLeft="@drawable/ic_lock_primary_24dp"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        tools:targetApi="o" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="@string/pilih_divisi" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/submit"
+            style="@style/AppTheme.Button.Standard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Register"
-            android:textSize="24sp" />
+            android:padding="16dp"
+            android:text="@string/daftar" />
 
-        <EditText
-            android:id="@+id/name"
-            style="@style/AppTheme.EditText"
-            android:layout_width="match_parent"
+        <ProgressBar
+            android:id="@+id/submitLoading"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:drawableStart="@drawable/ic_person_primary_24dp"
-            android:drawableLeft="@drawable/ic_person_primary_24dp"
-            android:hint="@string/nama_lengkap" />
+            android:layout_gravity="center"
+            android:visibility="gone" />
 
-        <EditText
-            android:id="@+id/nim"
-            style="@style/AppTheme.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:drawableStart="@drawable/ic_looks_one_primary_24dp"
-            android:drawableLeft="@drawable/ic_looks_one_primary_24dp"
-            android:hint="@string/nim"
-            android:inputType="numberSigned" />
+    </FrameLayout>
 
-        <EditText
-            android:id="@+id/email"
-            style="@style/AppTheme.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:drawableStart="@drawable/ic_email_primary_24dp"
-            android:drawableLeft="@drawable/ic_email_primary_24dp"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/password"
-            style="@style/AppTheme.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:drawableStart="@drawable/ic_lock_primary_24dp"
-            android:drawableLeft="@drawable/ic_lock_primary_24dp"
-            android:hint="@string/password"
-            android:inputType="textPassword" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pilih Divisi"
-            android:layout_marginBottom="4dp"/>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"/>
-
-        <!--<Spinner
-            android:id="@+id/divisi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/divisions" />-->
-
-        <!--<Button-->
-            <!--android:id="@+id/submit"-->
-            <!--style="@style/AppTheme.Button.Standard"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Daftar" />-->
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/submit"
-                style="@style/AppTheme.Button.Standard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="@string/daftar" />
-
-            <ProgressBar
-                android:id="@+id/submitLoading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:visibility="gone"/>
-
-        </FrameLayout>
-
-    </LinearLayout>
-</FrameLayout>
+</LinearLayout>

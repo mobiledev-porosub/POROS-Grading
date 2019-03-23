@@ -20,31 +20,20 @@ import Components.AppCompatActivity;
 public class SignInActivity extends AppCompatActivity implements OnCompleteListener, AppCompatActivity.UpdateUserListener {
 
     private final String TAG = "SignInActivity";
-    private final int RC_SIGN_IN = 1;
 
-    private Button mSignUp, mSignIn;// mGoogleSignIn;
+    private Button mSignUp, mSignIn;
     private EditText mEmail, mPassword;
     private SignInActivity activity = this;
-//    private GoogleSignInOptions gso;
-//    private GoogleSignInClient gsc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-//        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestIdToken(getString(R.string.default_web_client_id))
-//                .requestEmail()
-//                .build();
-//
-//        gsc = GoogleSignIn.getClient(this, gso);
-
         mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.password);
         mSignUp = findViewById(R.id.signUp);
         mSignIn = findViewById(R.id.signIn);
-        //mGoogleSignIn = findViewById(R.id.signInGoogle);
 
         mSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,13 +64,6 @@ public class SignInActivity extends AppCompatActivity implements OnCompleteListe
             }
         });
 
-//        mGoogleSignIn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                googleSignIn();
-//            }
-//        });
-
     }
 
     @Override
@@ -89,21 +71,6 @@ public class SignInActivity extends AppCompatActivity implements OnCompleteListe
         super.onStart();
         updateUser(this);
     }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if (requestCode == RC_SIGN_IN) {
-//            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-//            try {
-//                GoogleSignInAccount account = task.getResult(ApiException.class);
-//                firebaseAuthWithGoogle(account);
-//            } catch (ApiException e) {
-//                Log.w(TAG, "Google sign in failed", e);
-//            }
-//        }
-//    }
 
     @Override
     public void onComplete(@NonNull Task task) {
@@ -134,71 +101,4 @@ public class SignInActivity extends AppCompatActivity implements OnCompleteListe
     public void updateUserNotFound() {
 
     }
-
-//    private void googleSignIn() {
-//        Intent signInIntent = gsc.getSignInIntent();
-//        startActivityForResult(signInIntent, RC_SIGN_IN);
-//    }
-
-//    private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
-//        Log.d(TAG, "firebaseAuthWithGoogle: " + account.getId());
-//
-//        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-//        mAuth.signInWithCredential(credential)
-//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            Log.d(TAG, "signInWithCredential:success");
-////                            activity.updateUser(activity);
-//                            addUserToDB();
-//                        } else {
-//                            Log.d(TAG, "signInWithCredential:failure", task.getException());
-//                            activity.toast("Authentication Failed");
-//                        }
-//                    }
-//                });
-//    }
-
-//    private void addUserToDB() {
-//        firebaseUser = mAuth.getCurrentUser();
-//
-//        final DocumentReference ref = db.collection(Config.DB_USERS).document(firebaseUser.getUid());
-//        ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                if (task.isSuccessful()) {
-//                    DocumentSnapshot document = task.getResult();
-//                    if (document.exists()) {
-//                        Log.d(TAG, "Document exists!");
-//                        activity.updateUser(activity);
-//                    } else {
-//                        user = new User();
-//                        user.setDivision(-1);
-//                        user.setUid(firebaseUser.getUid());
-//                        user.setName(firebaseUser.getDisplayName());
-//                        user.setEmail(firebaseUser.getEmail());
-//                        user.setLevel(User.LEVEL_USER);
-//                        if (firebaseUser.getPhotoUrl() != null)
-//                            user.setPhoto_url(firebaseUser.getPhotoUrl().toString());
-//
-//                        ref.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<Void> task) {
-//                                if (task.isSuccessful()) {
-//                                    activity.updateUser(activity);
-//                                } else {
-//                                    Log.d(TAG, "Failed with: ", task.getException());
-//                                }
-//                            }
-//                        });
-//
-//                        Log.d(TAG, "Document does not exist!");
-//                    }
-//                } else {
-//                    Log.d(TAG, "Failed with: ", task.getException());
-//                }
-//            }
-//        });
-//    }
 }

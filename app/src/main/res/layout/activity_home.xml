@@ -61,7 +61,7 @@
             android:layout_marginBottom="16dp"
             android:gravity="center"
             android:textSize="16sp"
-            android:text="Kumpulkan poin anda untuk mendapatkan sertifikat" />
+            android:text="@string/kumpulkan_poin_anda_untuk_mendapatkan_sertifikat" />
 
         <Button
             android:id="@+id/certificate"
@@ -75,7 +75,7 @@
             android:paddingTop="16dp"
             android:paddingRight="32dp"
             android:paddingBottom="16dp"
-            android:text="Get Certificate" />
+            android:text="@string/get_certificate" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,7 +93,7 @@
                 android:drawableLeft="@drawable/ic_read_white_24dp"
                 android:drawablePadding="8dp"
                 android:textAllCaps="false"
-                android:text="Lihat Data" />
+                android:text="@string/lihat_data" />
 
             <Button
                 android:id="@+id/insert"
@@ -106,7 +106,7 @@
                 android:drawableLeft="@drawable/ic_add_white_24dp"
                 android:drawablePadding="8dp"
                 android:textAllCaps="false"
-                android:text="Tambah Data" />
+                android:text="@string/tambah_data" />
 
         </LinearLayout>
     </LinearLayout>

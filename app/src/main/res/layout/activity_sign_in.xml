@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".SignInActivity">
+    tools:context=".SignUpActivity">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/icon"
+        android:contentDescription="@string/app_icon" />
+
+    <EditText
+        android:id="@+id/email"
+        style="@style/AppTheme.EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_marginBottom="16dp"
+        android:drawableStart="@drawable/ic_email_primary_24dp"
+        android:drawableLeft="@drawable/ic_email_primary_24dp"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:autofillHints="@string/email"
+        tools:targetApi="o" />
 
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="32dp"
-            android:src="@drawable/icon" />
+    <EditText
+        android:id="@+id/password"
+        style="@style/AppTheme.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:drawableStart="@drawable/ic_lock_primary_24dp"
+        android:drawableLeft="@drawable/ic_lock_primary_24dp"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:autofillHints="@string/password"
+        tools:targetApi="o"/>
 
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:drawableStart="@drawable/ic_email_primary_24dp"
-            android:drawableLeft="@drawable/ic_email_primary_24dp"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            style="@style/AppTheme.EditText"/>
+    <Button
+        android:id="@+id/signIn"
+        style="@style/AppTheme.Button.Standard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/login" />
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:drawableStart="@drawable/ic_lock_primary_24dp"
-            android:drawableLeft="@drawable/ic_lock_primary_24dp"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            style="@style/AppTheme.EditText" />
+    <Button
+        android:id="@+id/signUp"
+        style="@style/AppTheme.Button.Standard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/daftar" />
 
-        <Button
-            android:id="@+id/signIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login"
-            style="@style/AppTheme.Button.Standard"
-            android:layout_marginBottom="8dp"/>
-
-        <Button
-            android:id="@+id/signUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/daftar"
-            style="@style/AppTheme.Button.Standard"/>
-
-    </LinearLayout>
-
-</FrameLayout>
+</LinearLayout>

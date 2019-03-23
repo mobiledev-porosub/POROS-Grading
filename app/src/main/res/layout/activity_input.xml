@@ -31,13 +31,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:hint="Nama Kegiatan"
-            android:inputType="text" />
+            android:hint="@string/nama_kegiatan"
+            android:inputType="text"
+            android:autofillHints="@string/nama_kegiatan"
+            tools:targetApi="o" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Jenis Kegiatan" />
+            android:text="@string/jenis_kegiatan" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -63,9 +65,11 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginBottom="16dp"
-            android:gravity="top|left"
-            android:hint="Deskripsi"
-            android:inputType="textMultiLine" />
+            android:gravity="top|start"
+            android:hint="@string/deskripsi"
+            android:inputType="textMultiLine"
+            android:autofillHints="@string/deskripsi"
+            tools:targetApi="o"  />
 
         <FrameLayout
             android:layout_width="match_parent"

@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="Belum diapprove"
+            android:text="@string/belum_diapprove"
             android:textColor="@color/text_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/points"
@@ -90,7 +90,8 @@
             app:layout_constraintEnd_toStartOf="@+id/name"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
             app:layout_constraintTop_toBottomOf="@+id/desc"
-            app:srcCompat="@drawable/ic_time_grey_24dp" />
+            app:srcCompat="@drawable/ic_time_grey_24dp"
+            android:contentDescription="@string/avatar" />
 
         <TextView
             android:id="@+id/points"

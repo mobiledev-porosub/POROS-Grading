@@ -5,8 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.endrawan.porosgrading.Models.Division;
@@ -15,7 +15,7 @@ import com.endrawan.porosgrading.R;
 public class DivisionViewHolder extends RecyclerView.ViewHolder {
     public ImageView mImage;
     public TextView mName;
-    public FrameLayout mRoot;
+    public LinearLayout mRoot;
 
     public DivisionViewHolder(@NonNull View itemView) {
         super(itemView);

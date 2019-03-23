@@ -122,7 +122,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/decline"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-            app:srcCompat="@drawable/ic_clear_red_24dp" />
+            app:srcCompat="@drawable/ic_clear_red_24dp"
+            android:contentDescription="@string/decline" />
 
         <TextView
             android:id="@+id/decline"
@@ -130,7 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="Tolak"
+            android:text="@string/tolak"
             android:textColor="@color/red"
             app:layout_constraintBottom_toBottomOf="@+id/img_decline"
             app:layout_constraintEnd_toStartOf="@+id/guidelineCenter"
@@ -141,7 +142,7 @@
             android:id="@+id/accept"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Terima"
+            android:text="@string/terima"
             android:textColor="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="@+id/img_accept"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
@@ -160,7 +161,8 @@
             app:layout_constraintEnd_toStartOf="@+id/accept"
             app:layout_constraintStart_toStartOf="@+id/guidelineCenter"
             app:layout_constraintTop_toTopOf="@+id/img_decline"
-            app:srcCompat="@drawable/ic_check_primary_24dp" />
+            app:srcCompat="@drawable/ic_check_primary_24dp"
+            android:contentDescription="@string/accept" />
 
         <View
             android:id="@+id/view"

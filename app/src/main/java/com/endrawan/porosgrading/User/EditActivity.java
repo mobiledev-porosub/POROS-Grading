@@ -28,11 +28,10 @@ public class EditActivity extends AppCompatActivity implements DivisionsAdapter.
     private Division division;
 
     private Button mSubmit;
-    private EditText mName, mNim, mEmail; //mPassword, mConfirmation;
+    private EditText mName, mNim, mEmail;
     private RecyclerView recyclerView;
     private DivisionsAdapter adapter;
     private ProgressBar mSubmitLoading;
-    EditActivity activity = this;
 
 
     @Override

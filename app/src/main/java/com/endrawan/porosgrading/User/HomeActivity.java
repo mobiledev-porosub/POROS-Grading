@@ -71,8 +71,8 @@ public class HomeActivity extends AppCompatActivity {
         mCertificate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO add action to certificate
                 toast("Selamat anda telah mendapatkan sertifikat!");
+                startActivity(new Intent(HomeActivity.this, CertificateActivity.class));
             }
         });
 
@@ -114,7 +114,7 @@ public class HomeActivity extends AppCompatActivity {
         mScore.setText(pointsOutput);
         if (user.getTotalPoints() >= Config.MIN_POINTS) {
             mCertificate.setEnabled(true);
-            mMessage.setText("Selamat score yang anda telah kumpulkan telah mencapai target!, Anda bisa mengambil sertifikat!");
+            mMessage.setText(getString(R.string.take_certificate_label));
         }
     }
 

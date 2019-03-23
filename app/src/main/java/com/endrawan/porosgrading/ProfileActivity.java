@@ -21,12 +21,9 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        TextView mName, mEmail, mNim, mDivision, mPoints, mDelete, mLogout, mEdit;
+        TextView mName, mEmail, mNim, mDivision, mDelete, mLogout, mEdit;
         Toolbar mToolbar;
         CircleImageView mImage;
-
-//        Bundle extras = getIntent().getExtras();
-//        int points = extras.getInt(ActionActivity.EXTRAS_POINTS);
 
         user = getUserFromSP();
 
@@ -34,7 +31,6 @@ public class ProfileActivity extends AppCompatActivity {
         mEmail = findViewById(R.id.email);
         mNim = findViewById(R.id.nim);
         mDivision = findViewById(R.id.division);
-//        mPoints = findViewById(R.id.points);
         mDelete = findViewById(R.id.delete);
         mLogout = findViewById(R.id.logout);
         mImage = findViewById(R.id.image);
@@ -44,7 +40,6 @@ public class ProfileActivity extends AppCompatActivity {
         mName.setText(user.getName());
         mEmail.setText(user.getEmail());
         mNim.setText(user.getNim());
-//        mPoints.setText(String.valueOf(user.getTotalPoints()));
         mDivision.setText(Config.DIVISIONS[user.getDivision()].getName());
 
         setSupportActionBar(mToolbar);
