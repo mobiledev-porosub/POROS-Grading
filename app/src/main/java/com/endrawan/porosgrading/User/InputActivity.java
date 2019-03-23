@@ -40,7 +40,7 @@ public class InputActivity extends AppCompatActivity implements OnCompleteListen
     private EditText mName, mDescription;
     private Button mSubmit;
     private Spinner mSpinner;
-    private ProgressBar mSpinnerLoading;
+    private ProgressBar mSpinnerLoading, mSubmitLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class InputActivity extends AppCompatActivity implements OnCompleteListen
         mSubmit = findViewById(R.id.submit);
         toolbar = findViewById(R.id.toolbar);
         mSpinnerLoading = findViewById(R.id.spinner_loading);
+        mSubmitLoading = findViewById(R.id.submitLoading);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Kegiatan Baru");
@@ -62,6 +63,19 @@ public class InputActivity extends AppCompatActivity implements OnCompleteListen
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String desc = mDescription.getText().toString().trim();
+                String name = mName.getText().toString().trim();
+
+                if(name.length() <= Config.MIN_LENGTH_ACTIVITY_NAME) {
+                    toast("Nama kegiatan minimal " + Config.MIN_LENGTH_ACTIVITY_NAME + " Karakter!");
+                    return;
+                }
+
+                if(desc.length() <= Config.MIN_LENGTH_ACTIVITY_DESC) {
+                    toast("Deskripsi kegiatan minimal " + Config.MIN_LENGTH_ACTIVITY_DESC + " Karakter!");
+                    return;
+                }
+
                 ActionType actionType = actionTypes.get(mSpinner.getSelectedItemPosition());
                 action.setName(mName.getText().toString());
                 action.setActivity_type(actionType.getName());
@@ -72,6 +86,7 @@ public class InputActivity extends AppCompatActivity implements OnCompleteListen
                 DocumentReference ref = db.collection(Config.DB_ACTIVITIES).document();
                 action.setId(ref.getId());
                 ref.set(action).addOnCompleteListener(activity);
+                submitHide();
             }
         });
     }
@@ -108,6 +123,7 @@ public class InputActivity extends AppCompatActivity implements OnCompleteListen
                 } else {
                     Log.d(TAG, "get failed with ", task.getException());
                 }
+                submitShow();
             }
         });
     }
@@ -118,5 +134,17 @@ public class InputActivity extends AppCompatActivity implements OnCompleteListen
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(adapter);
         mSpinner.setVisibility(View.VISIBLE);
+    }
+
+    private void submitHide() {
+        mSubmit.setText("");
+        mSubmitLoading.setVisibility(View.VISIBLE);
+        mSubmit.setEnabled(false);
+    }
+
+    private void submitShow() {
+        mSubmit.setText(getResources().getString(R.string.submit));
+        mSubmitLoading.setVisibility(View.GONE);
+        mSubmit.setEnabled(true);
     }
 }

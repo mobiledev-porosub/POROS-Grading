@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.endrawan.porosgrading.Adapters.DivisionsAdapter;
 import com.endrawan.porosgrading.Config;
@@ -30,6 +31,7 @@ public class EditActivity extends AppCompatActivity implements DivisionsAdapter.
     private EditText mName, mNim, mEmail; //mPassword, mConfirmation;
     private RecyclerView recyclerView;
     private DivisionsAdapter adapter;
+    private ProgressBar mSubmitLoading;
     EditActivity activity = this;
 
 
@@ -43,12 +45,11 @@ public class EditActivity extends AppCompatActivity implements DivisionsAdapter.
             division = Config.DIVISIONS[user.getDivision()];
 
         mEmail = findViewById(R.id.email);
-//        mPassword = findViewById(R.id.password);
-//        mConfirmation = findViewById(R.id.passwordConfirm);
         mName = findViewById(R.id.name);
         mNim = findViewById(R.id.nim);
         recyclerView = findViewById(R.id.recyclerView);
         mSubmit = findViewById(R.id.submit);
+        mSubmitLoading = findViewById(R.id.submitLoading);
 
         if (user.getDivision() == -1)
             adapter = new DivisionsAdapter(this, Arrays.asList(Config.DIVISIONS), this);
@@ -82,9 +83,24 @@ public class EditActivity extends AppCompatActivity implements DivisionsAdapter.
     }
 
     private void verifAndEdit() {
-        user.setName(mName.getText().toString());
-        user.setNim(mNim.getText().toString());
+        String name = mName.getText().toString().trim();
+        String nim = mNim.getText().toString().trim();
+
+        if(!(name.length() >=  Config.MIN_LENGTH_NAME)) {
+            toast("Nama minimal " + Config.MIN_LENGTH_NAME + " Karakter!");
+            return;
+        }
+
+        if(!(nim.length() >=  Config.MIN_LENGTH_NIM)) {
+            toast("Email minimal " + Config.MIN_LENGTH_NIM + " Karakter!");
+            return;
+        }
+
+        user.setName(name);
+        user.setNim(nim);
         user.setDivision(division.getCode());
+
+        submitHide();
 
         db.collection(Config.DB_USERS).document(user.getUid()).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -95,7 +111,20 @@ public class EditActivity extends AppCompatActivity implements DivisionsAdapter.
                 } else {
                     toast("Gagal Mengubah data: " + task.getException());
                 }
+                submitShow();
             }
         });
+    }
+
+    private void submitHide() {
+        mSubmit.setText("");
+        mSubmitLoading.setVisibility(View.VISIBLE);
+        mSubmit.setEnabled(false);
+    }
+
+    private void submitShow() {
+        mSubmit.setText(getResources().getString(R.string.edit_akun));
+        mSubmitLoading.setVisibility(View.GONE);
+        mSubmit.setEnabled(true);
     }
 }

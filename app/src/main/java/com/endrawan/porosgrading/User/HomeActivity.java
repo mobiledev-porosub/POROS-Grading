@@ -80,7 +80,6 @@ public class HomeActivity extends AppCompatActivity {
         setListener();
     }
 
-
     @Override
     public boolean onSupportNavigateUp() {
         startActivityForResult(new Intent(this, ProfileActivity.class), RC_PROFILE);

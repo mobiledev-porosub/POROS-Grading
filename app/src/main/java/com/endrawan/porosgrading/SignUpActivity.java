@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.endrawan.porosgrading.Adapters.DivisionsAdapter;
@@ -29,6 +30,7 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
     private Division division;
 
     private Button mSubmit;
+    private ProgressBar mSubmitLoading;
     private EditText mName, mNim, mEmail, mPassword;
     private RecyclerView recyclerView;
     private DivisionsAdapter adapter;
@@ -45,8 +47,9 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
         mNim = findViewById(R.id.nim);
         recyclerView = findViewById(R.id.recyclerView);
         mSubmit = findViewById(R.id.submit);
+        mSubmitLoading = findViewById(R.id.submitLoading);
 
-        adapter = new DivisionsAdapter(this, Arrays.asList(Config.DIVISIONS), this);
+        adapter = new DivisionsAdapter(this, Arrays.asList(Config.DIVISIONS), this, -1);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(adapter);
 
@@ -85,6 +88,8 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
                     return;
                 }
 
+                submitHide();
+
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(activity, activity);
             }
@@ -107,6 +112,7 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
             Log.w(TAG, "createUserWithEmail:failure", task.getException());
             Toast.makeText(activity, "Authentication failed.",
                     Toast.LENGTH_SHORT).show();
+            submitShow();
         }
     }
 
@@ -135,12 +141,14 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
                     public void onSuccess(Void aVoid) {
                         Log.d(TAG, "DocumentSnapshot successfully written!");
                         updateUI();
+                        submitShow();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w(TAG, "Error writing document", e);
+                        submitShow();
                     }
                 });
     }
@@ -151,5 +159,17 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
         if(viewHolder != null && division != null)
         viewHolder.changeToNormal(this, division);
         division = newDivision;
+    }
+
+    private void submitHide() {
+        mSubmit.setText("");
+        mSubmitLoading.setVisibility(View.VISIBLE);
+        mSubmit.setEnabled(false);
+    }
+
+    private void submitShow() {
+        mSubmit.setText(getResources().getString(R.string.daftar));
+        mSubmitLoading.setVisibility(View.GONE);
+        mSubmit.setEnabled(true);
     }
 }

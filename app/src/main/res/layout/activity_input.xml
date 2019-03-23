@@ -67,13 +67,25 @@
             android:hint="Deskripsi"
             android:inputType="textMultiLine" />
 
-        <Button
-            android:id="@+id/submit"
-            style="@style/AppTheme.Button.Standard"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="Submit" />
+            android:layout_height="wrap_content">
 
+            <Button
+                android:id="@+id/submit"
+                style="@style/AppTheme.Button.Standard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@string/submit" />
+
+            <ProgressBar
+                android:id="@+id/submitLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+
+        </FrameLayout>
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -52,28 +52,6 @@
             android:inputType="textEmailAddress"
             android:enabled="false"/>
 
-        <!--<EditText-->
-            <!--android:id="@+id/password"-->
-            <!--style="@style/AppTheme.EditText"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="16dp"-->
-            <!--android:drawableStart="@drawable/ic_lock_primary_24dp"-->
-            <!--android:drawableLeft="@drawable/ic_lock_primary_24dp"-->
-            <!--android:hint="@string/password"-->
-            <!--android:inputType="textPassword" />-->
-
-        <!--<EditText-->
-            <!--android:id="@+id/passwordConfirm"-->
-            <!--style="@style/AppTheme.EditText"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="16dp"-->
-            <!--android:drawableStart="@drawable/ic_lock_primary_24dp"-->
-            <!--android:drawableLeft="@drawable/ic_lock_primary_24dp"-->
-            <!--android:hint="Konfirmasi Password"-->
-            <!--android:inputType="textPassword" />-->
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -86,12 +64,26 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"/>
 
-        <Button
-            android:id="@+id/submit"
-            style="@style/AppTheme.Button.Standard"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Edit Akun" />
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/submit"
+                style="@style/AppTheme.Button.Standard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@string/edit_akun" />
+
+            <ProgressBar
+                android:id="@+id/submitLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+
+        </FrameLayout>
 
     </LinearLayout>
 </FrameLayout>
