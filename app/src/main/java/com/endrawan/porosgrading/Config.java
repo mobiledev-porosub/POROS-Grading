@@ -17,6 +17,7 @@ public class Config {
 
     public static final int MIN_POINTS = 1500;
 
+
     public static final Division[] DIVISIONS = {
             new Division("Mobile",
                     R.drawable.ic_smartphone_primary_24dp,
