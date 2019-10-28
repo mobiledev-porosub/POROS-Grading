@@ -1,8 +1,10 @@
 package com.endrawan.porosgrading.User;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +22,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.util.Objects;
+
 import Components.AppCompatActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -29,10 +33,10 @@ public class HomeActivity extends AppCompatActivity {
     private final String TAG = "HomeActivity";
 
     private TextView mName, mScore, mMessage;
-    private Button mRead, mInsert, mCertificate;
+    private Button mCertificate;
     private CircleImageView mImage;
-    private Toolbar mToolbar;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,14 +47,14 @@ public class HomeActivity extends AppCompatActivity {
         mName = findViewById(R.id.name);
         mScore = findViewById(R.id.score);
         mMessage = findViewById(R.id.message);
-        mRead = findViewById(R.id.read);
-        mInsert = findViewById(R.id.insert);
+        Button mRead = findViewById(R.id.read);
+        Button mInsert = findViewById(R.id.insert);
         mCertificate = findViewById(R.id.certificate);
         mImage = findViewById(R.id.image);
-        mToolbar = findViewById(R.id.toolbar);
+        Toolbar mToolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_hamburger_black_24dp);
 
@@ -110,7 +114,7 @@ public class HomeActivity extends AppCompatActivity {
         mName.setText(user.getName());
         if (user.getPhoto_url() != null)
             Glide.with(this).load(user.getPhoto_url()).into(mImage);
-        String pointsOutput = String.valueOf(user.getTotalPoints()) + "/" + String.valueOf(Config.MIN_POINTS);
+        String pointsOutput = user.getTotalPoints() + "/" + Config.MIN_POINTS;
         mScore.setText(pointsOutput);
         if (user.getTotalPoints() >= Config.MIN_POINTS) {
             mCertificate.setEnabled(true);

@@ -47,7 +47,7 @@ public class DivisionsAdapter extends RecyclerView.Adapter<DivisionViewHolder> {
     public void onBindViewHolder(@NonNull final DivisionViewHolder holder, int i) {
         final Division division = divisions.get(i);
         holder.mName.setText(division.getName());
-        holder.mImage.setImageDrawable(ContextCompat.getDrawable(context, division.getImage_primary()));
+//        holder.mImage.setImageDrawable(ContextCompat.getDrawable(context, division.getImage_primary()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

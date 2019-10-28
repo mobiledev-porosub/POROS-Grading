@@ -25,13 +25,13 @@ public class DivisionViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void changeToSelected(Context context, Division division) {
-        mImage.setImageDrawable(ContextCompat.getDrawable(context, division.getImage_white()));
+//        mImage.setImageDrawable(ContextCompat.getDrawable(context, division.getImage_white()));
         mRoot.setBackground(ContextCompat.getDrawable(context, R.drawable.division_background_pressed));
         mName.setTextColor(ContextCompat.getColor(context, R.color.white));
     }
 
     public void changeToNormal(Context context, Division division) {
-        mImage.setImageDrawable(ContextCompat.getDrawable(context, division.getImage_primary()));
+//        mImage.setImageDrawable(ContextCompat.getDrawable(context, division.getImage_primary()));
         mRoot.setBackground(ContextCompat.getDrawable(context, R.drawable.division_background_normal));
         mName.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
     }

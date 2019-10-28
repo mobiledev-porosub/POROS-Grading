@@ -89,8 +89,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:drawableStart="@drawable/ic_read_white_24dp"
-                android:drawableLeft="@drawable/ic_read_white_24dp"
                 android:drawablePadding="8dp"
                 android:textAllCaps="false"
                 android:text="@string/lihat_data" />
@@ -102,8 +100,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:drawableStart="@drawable/ic_add_white_24dp"
-                android:drawableLeft="@drawable/ic_add_white_24dp"
                 android:drawablePadding="8dp"
                 android:textAllCaps="false"
                 android:text="@string/tambah_data" />

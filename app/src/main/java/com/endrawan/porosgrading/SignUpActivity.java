@@ -72,21 +72,21 @@ public class SignUpActivity extends AppCompatActivity implements OnCompleteListe
                     return;
                 }
 
-                if(!(email.length() >=  Config.MIN_LENGTH_EMAIL)) {
-                    toast("Email minimal " + Config.MIN_LENGTH_EMAIL + " Karakter!");
-                    return;
-                }
-
-                if(!(password.length() >=  Config.MIN_LENGTH_PASSWORD)) {
-                    toast("Password minimal " + Config.MIN_LENGTH_PASSWORD + " Karakter!");
-                    return;
-                }
-
-
-                if(!(nim.length() >=  Config.MIN_LENGTH_NIM)) {
-                    toast("Email minimal " + Config.MIN_LENGTH_NIM + " Karakter!");
-                    return;
-                }
+//                if(!(email.length() <=  Config.MIN_LENGTH_EMAIL)) {
+//                    toast("Email minimal " + Config.MIN_LENGTH_EMAIL + " Karakter!");
+//                    return;
+//                }
+//
+//                if(!(password.length() >=  Config.MIN_LENGTH_PASSWORD)) {
+//                    toast("Password minimal " + Config.MIN_LENGTH_PASSWORD + " Karakter!");
+//                    return;
+//                }
+//
+//
+//                if(!(nim.length() <=  Config.MIN_LENGTH_NIM)) {
+//                    toast("Email minimal " + Config.MIN_LENGTH_NIM + " Karakter!");
+//                    return;
+//                }
 
                 submitHide();
 

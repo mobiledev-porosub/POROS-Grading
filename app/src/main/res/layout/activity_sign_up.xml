@@ -23,8 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:autofillHints="@string/nama_lengkap"
-        android:drawableStart="@drawable/ic_person_primary_24dp"
-        android:drawableLeft="@drawable/ic_person_primary_24dp"
         android:hint="@string/nama_lengkap"
         android:inputType="textPersonName"
         tools:targetApi="o" />
@@ -36,8 +34,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:autofillHints="@string/nim"
-        android:drawableStart="@drawable/ic_looks_one_primary_24dp"
-        android:drawableLeft="@drawable/ic_looks_one_primary_24dp"
         android:hint="@string/nim"
         android:inputType="numberSigned"
         tools:targetApi="o" />
@@ -49,8 +45,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:autofillHints="@string/email"
-        android:drawableStart="@drawable/ic_email_primary_24dp"
-        android:drawableLeft="@drawable/ic_email_primary_24dp"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         tools:targetApi="o" />
@@ -62,8 +56,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:autofillHints="@string/password"
-        android:drawableStart="@drawable/ic_lock_primary_24dp"
-        android:drawableLeft="@drawable/ic_lock_primary_24dp"
         android:hint="@string/password"
         android:inputType="textPassword"
         tools:targetApi="o" />
